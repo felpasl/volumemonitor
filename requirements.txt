@@ -1,0 +1,15 @@
+pandas
+python-binance
+requests
+arrow
+ccxt>=1.24.96
+SQLAlchemy
+python-telegram-bot
+tabulate
+python-rapidjson
+sdnotify
+questionary
+prompt-toolkit
+numpy
+pandas
+jinja2==2.11.2
