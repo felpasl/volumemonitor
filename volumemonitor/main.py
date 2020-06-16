@@ -18,8 +18,13 @@ def Main():
         print(f"Get {pair} {timeframe}")
         df = exchange.fetchOHLCV(pair, timeframe, f"{size} hours ago")
         if not df.empty:
+            df_old = store.load_data(pair,timeframe)
             df = calculate_gainer(df)
-            store.store_data(pair=pair,timeframe=timeframe,data=df)
+            if not df_old.empty:
+                df_old.append(df)
+            else:
+                df_old = df
+            store.store_data(pair=pair,timeframe=timeframe,data=df_old)
             print(f"Returned {pair} {df.size} lines")
         else:
             print(f"Returned {pair} Empty!")

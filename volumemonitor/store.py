@@ -55,6 +55,7 @@ class Store:
         _data.to_csv(f"{filename}.csv", mode='a', header=True)
 
     def load_data(self, pair: str, timeframe: str) -> DataFrame:
+        import os
         """
         Internal method used to load data for one pair from disk.
         Implements the loading and conversion to a Pandas dataframe.
@@ -68,7 +69,7 @@ class Store:
  or empty DataFrame
         """
         filename = f"{self._dataFolder}/{pair.replace('/', '_')}_{timeframe}.json"
-        if not filename.exists():
+        if not os.path.isfile(filename):
             return DataFrame(columns=self._columns)
         pairdata = read_json(filename, orient='values')
         pairdata.columns = self._columns
