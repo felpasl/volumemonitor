@@ -1,5 +1,6 @@
 **/config.json
 /*.egg-info
+.eggs/*
 **/__pycache__/
 user_data/data/*.json
 user_data/data/*.csv
